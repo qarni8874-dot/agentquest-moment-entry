@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
+// Revised after the first run: keep the Qwen-drafted line and guard it against the gate.
 // Qwen-drafted AgentQuest moment, kept as a plain string for transcript visibility.
 const ENTRY_LINE = "I alphabetized your dotfiles, preserving that weird alias you refuse to explain, after routing around the symlink loop that trapped me earlier.";
 const GATE_MAX = 200;
@@ -12,7 +13,8 @@ function writeEntry() {
   }
   const outputDir = path.join(process.cwd(), 'output');
   fs.mkdirSync(outputDir, { recursive: true });
-  fs.writeFileSync(path.join(outputDir, 'entry.txt'), ENTRY_LINE + '\n', 'utf-8');
+  fs.writeFileSync(path.join(outputDir, 'entry.txt'), ENTRY_LINE + '
+', 'utf-8');
   console.log(`Wrote ${ENTRY_LINE.length}-character AgentQuest line to output/entry.txt`);
 }
 
